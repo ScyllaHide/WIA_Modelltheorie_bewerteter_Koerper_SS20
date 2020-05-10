@@ -1,6 +1,7 @@
 \documentclass[ngerman,a4paper,order=firstname]{mathscript}
 \usepackage{mathoperators}
 
+\usepackage{xcolor}
 % % % local commands
 \DeclareMathOperator{\Ad}{Ad}				% Adjoint
 \DeclareMathOperator{\PSL}{PSL} 			% projective linear group 
@@ -21,13 +22,20 @@
 \newcommand{\LL}{\mathcal L}
 \newcommand{\RR}{\mathcal R}
 \newcommand{\FF}{\mathcal F}
-\newcommand{\MM}{\mathcal M}
+\newcommand{\MM}{\mathcal M} 		
 \newcommand{\NN}{\mathcal N}
 \newcommand{\CC}{\mathcal C}
 \newcommand{\arity}{\lambda}
 
+% % % % better \le and \ge
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+
 \DeclareMathOperator{\group}{group}
 \DeclareMathOperator{\ring}{ring}
+
+% % % % color stuff
+\newcommand{\selfnote}[1]{\textcolor{gray}{#1}}
 
 % get this stupid arrows:
 %\usepackage{mathabx,graphicx}  % ---> add to mathoperators

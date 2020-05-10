@@ -12,9 +12,52 @@ Literatur
 \begin{example}
 	\begin{itemize}
 		\item \emph{Sprache der Gruppen} ist $\LL_{\group} = \set{\ast, \cdot^{-1}}$, wobei $\ast$ ist zweistellig und $\cdot^{-1}$ is einstelliges Funktionssymbol.
-		\item \emph{Sprache der Ringe} ist $\LL_{\ring} = \set{+, \cdot, 0, 1}$, dabei $+$ und $\cdot$ zweistellig Funktionssymbole und 0,1 Konstantensymbole.
+		\item \emph{Sprache der Ringe} ist $\LL_{\ring} = \set{+, \cdot, 0, 1}$, dabei sind $+$ und $\cdot$ zweistellig Funktionssymbole und 0,1 Konstantensymbole.
 	\end{itemize}
 \end{example}
+\begin{definition}[$\LL$-Struktur]
+	\proplbl{def_1_2_3}
+	Sei $\LL = (\FF,\RR, \CC, \arity)$ eine \emph{Sprache}. Eine \begriff{$\LL$-Struktur} ist ein Tupel
+	\begin{align*}
+		\MM = (M, (f^{\MM})_{f \in \FF}, (R^{\MM})_{R \in \RR}, (c^{\MM})_{c \in \CC}),
+	\end{align*}
+	wobei
+	\begin{itemize}
+		\item $M$ \emph{nichtleere} Menge
+		\item $f^{\MM}\colon M^{\arity(f)} \to M$
+		\item $R^{\MM} \subseteq M^{\arity(R)}$
+		\item $c^{\MM} \in M$
+	\end{itemize}
+	die \emph{Interpretation} der entsprechenden Symbole sind.
+	\item \emph{Kardinalität} von $\MM$ ist $\abs{\MM} = \abs{M}$
+\end{definition}
+\begin{*remark}
+	\selfnote{Wir werden lieber $R^{\MM}(a)$ für $\underline{a} \in R^{\MM}$ schreiben. ($\underline{a} \in M^{\arity(R)}$) Hierbei ist $\underline{a} = (a_1, \dots, a_n)$!}
+\end{*remark}
+\begin{example}
+	Jeder Ring ist auf natürliche Weise eine $\LL_{\ring}$-Struktur.
+\end{example}
+\begin{definition}[Unterstruktur]
+	Sei $\MM$ eine $\LL$-Struktur. Eine $\LL$-Struktur $\NN$ ist eine \begriff{Unterstruktur} von $\MM$ (in Zeichen $\NN \le \MM$), wenn
+	\begin{itemize}
+		\item $N \subseteq M$
+		\item $f^{\NN} = f^{\MM}_{\mid N^{\arity(f)}}$ $\qquad$\selfnote{(insbesondere: $f^{\MM}(N^{\arity(f)} \subseteq N)$)}
+		\item $R^{\NN} = R^{\MM} \cap N^{\arity(R)}$
+		\item $c^{\NN} = c^{\MM}$
+	\end{itemize}
+für alle Symbole in $\LL$. Dabei nennt man $\MM$ eine \begriff{Erweiterung} von $\NN$.
+\end{definition}
+\paragraph{Substructures}[Zoe Chatzidakis]
+$N \subseteq M$ gehört zu einer Unterstruktur von $\MM$ genau dann wenn
+\begin{itemize}
+	\item $N$ erhält alle (Interpretationen von) Konstantensymbolen von $\LL$
+	\item $N$ ist abgeschlossen unter Anwendung von (Interpretation  von) von Funktionen von $\LL$.
+\end{itemize}
+Falls $\LL$ keine Konstantensymbole hat, so ist $\emptyset$ eine Unterstruktur!
+\begin{*remark}[Fehm]
+	Beachte dabei das Leere Mengen nach \propref{def_1_2_3} keine Unterstruktur sein kann.\\ Betrachten wir konkrete Auswirkungen von Weglassen von Symbolen. Beim Weglassen des neutralen Elements in der Sprache der Gruppen passiert z.B. nichts, weil sowohl neutrales Element als auch Inversion aus der Multiplikation definierbar sind und wir die leere menge nicht zulassen.\\
+	Lassen wir die Inversion weg, so müssen Unterstrukturen nicht mehr abgeschlossen unter Inversion sein, sind also nicht notwendigerweise Untergruppen (sondern nur Untermonoide).  
+\end{*remark}
 \subsection{Formel und Theorien}
 
 \subsection{Kompaktheitssatz}
