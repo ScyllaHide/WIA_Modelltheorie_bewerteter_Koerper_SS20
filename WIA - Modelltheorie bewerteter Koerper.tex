@@ -22,11 +22,16 @@
 \newcommand{\LL}{\mathcal L}
 \newcommand{\RR}{\mathcal R}
 \newcommand{\FF}{\mathcal F}
-\newcommand{\MM}{\mathcal M} 		
+\newcommand{\MM}{\mathcal M}
+\newcommand{\M}{\mathbb M} 						% class of \LL structures
 \newcommand{\NN}{\mathcal N}
 \newcommand{\CC}{\mathcal C}
 \newcommand{\arity}{\lambda}
-\newcommand{\discup}{\overset{+}{\cup}}
+\newcommand{\discup}{\overset{+}{\cup}}			% disjoint union
+%\newcommand{\satisfy}{\vDash}					% M \satisfy \phi(a)
+\newcommand{\satisfy}{\models}					% M \satisfy \phi(a)
+\newcommand{\lsatisfy}{\mathbin{\rotatebox[origin=c]{180}{$\models$}}}					% \phi(a) \satisfy M
+\DeclareMathOperator{\Diag}{Diag}				% atomic diagrams
 
 % % % % better \le and \ge
 \renewcommand{\ge}{\geqslant}
@@ -34,10 +39,16 @@
 
 \DeclareMathOperator{\group}{group}
 \DeclareMathOperator{\ring}{ring}
+\DeclareMathOperator{\el}{el}
+\DeclareMathOperator{\theory}{Th}
 
 % % % % color note stuff
 \newcommand{\marganote}[1]{\textcolor{gray}{#1}}
 \newcommand{\fehmnote}[1]{\textcolor{red}{#1}}
+\newcommand{\pascalnote}[1]{\textcolor{blue}{#1}}
+
+% % % % % % % mark stuff
+\newcommand{\ital}[1]{\textit{#1}}
 
 % get this stupid arrows:
 %\usepackage{mathabx,graphicx}  % ---> add to mathoperators
@@ -97,13 +108,13 @@
 \pagenumbering{arabic}
 \pagestyle{fancy}
 
-%\chapter*{Vorwort}
-%\input{./TeX_files/Vorwort}
+\chapter*{Vorwort}
+\input{./TeX_files/Vorwort}
 \chapter{Grundlagen}
 \input{./TeX_files/chap1}
 \input{./TeX_files/chap2}
 \input{./TeX_files/exer_basics}
-\chapter{Cayley Graphs}
+\chapter{Anwendung auf Bewertete Körper}
 
 \part*{Anhang}
 \addcontentsline{toc}{part}{Anhang}
