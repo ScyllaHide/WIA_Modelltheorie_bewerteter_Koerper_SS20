@@ -32,7 +32,7 @@ Literatur
 	\item \emph{Kardinalität} von $\MM$ ist $\abs{\MM} = \abs{M}$
 \end{definition}
 \begin{*remark}
-	\marganote{Wir werden lieber $R^{\MM}(a)$ für $\underline{a} \in R^{\MM}$ schreiben. ($\underline{a} \in M^{\arity(R)}$) Hierbei ist $\underline{a} = (a_1, \dots, a_n)$!}
+	\marganote{Wir werden lieber $R^{\MM}(a)$ für $\ul{a} \in R^{\MM}$ schreiben. ($\ul{a} \in M^{\arity(R)}$) Hierbei ist $\ul{a} = (a_1, \dots, a_n)$!}
 \end{*remark}
 \begin{example}
 	Jeder Ring ist auf natürliche Weise eine $\LL_{\ring}$-Struktur.
@@ -66,8 +66,8 @@ Falls $\LL$ keine Konstantensymbole hat, so ist $\emptyset$ eine Unterstruktur!
 	\end{align*}
 	ist \begriff{$\LL$-Morphismus}, wenn 
 	\begin{itemize}
-		\item $\xi(f^{\MM}(\underline{a})) = f^{\NN}(\xi(\underline{a}))$ für $\underline{a} \in M^{\arity(f)}$
-		\item $R^{\N}(\underline{a}) \implies R^{\NN}(\xi(\underline{a}))$ für $\underline{a} \in M^{\arity(f)}$   $\marganote{R^{\NN}\subseteq \xi(R^{\NN})}$
+		\item $\xi(f^{\MM}(\ul{a})) = f^{\NN}(\xi(\ul{a}))$ für $\ul{a} \in M^{\arity(f)}$
+		\item $R^{\N}(\ul{a}) \implies R^{\NN}(\xi(\ul{a}))$ für $\ul{a} \in M^{\arity(f)}$   $\marganote{R^{\NN}\subseteq \xi(R^{\NN})}$
 		\item $\xi(C^{\MM}) = c^{\MM}$
 	\end{itemize}
 	für alle Symbole $f \in \FF, R \in \RR, c \in \CC$. \fehmnote{(Hier schreiben wir $\xi(f(a_1, \dots, a_n))$ für $(\xi(a_1),\dots, \xi(a_n)$)}. $\xi$ ist eine \begriff{$\LL$}-Einbettung, wenn $\xi$ zusätzlich injektiv ist und 
@@ -86,7 +86,7 @@ Falls $\LL$ keine Konstantensymbole hat, so ist $\emptyset$ eine Unterstruktur!
 	\end{align*}
 	Sei $\MM'$ eine $\LL'$-Struktur. Das \begriff{$\LL$-Redukt} von $\MM'$ ist
 	\begin{align*}
-		\MM'_{\mid \LL} := (M', (f^{\MM})_{f \in \FF}, (R^{\MM}_{R \in \R},(c^{\MM}_{c \in \CC}))
+		\MM'_{\mid \LL} := (M', (f^{\MM})_{f \in \FF}, (R^{\MM})_{R \in \RR},(c^{\MM})_{c \in \CC})
 	\end{align*}
 \end{definition}
 \begin{example}
@@ -111,15 +111,82 @@ Falls $\LL$ keine Konstantensymbole hat, so ist $\emptyset$ eine Unterstruktur!
 	\begin{align*}
 		f^{\MM}\colon S_1^{\MM} \to S_2^{\MM}
 	\end{align*}
-	und ignoriert da andere Sorten.
+	und ignoriert die andere Sorten.
 \end{definition}
 \begin{example}
 	Die mehrsortigen Strukturen einer Sprache $\LL = (S_1, S_2, S_3)$, wobei ``$\epsilon \subseteq S_1 \times S_2$'' können als Mengen $S_1$ mit einer Familie $S_2$ von Teilmengen von $S_1$ aufgebaut werden.
 \end{example}
 \subsection{Formel und Theorien}
+So nun werden wir noch etwas höher bauen ...
 \begin{definition}[$\LL$-Term, Interpretation]
 	Ein \begriff{$\LL$-Term} ist eine Zeichenkette der Form $x_i$ (eine Variable), $c$ (ein Konstantensymbol) oder $f(t_1, \dots, t_{\arity(f)})$, wobei $f$ ein Funktionssymbol und $t_1, \dots, t_{\arity(f)}$ Terme. Die \begriff{Interpretation} eine $\LL$-Terms $t = t(x_1,\dots, x_n)$ in Variablen $x_1, \dots, x_n$ in einer $\LL$-Struktur $\MM$ ist die entsprechende Abbildung $t^{\MM}\colon M^n \to M$.
 \end{definition}
+\begin{example}
+	Der $\LL_{\ring}$-Term $+(\cdot(x_1,x_2),1)$, den wir auch wie üblich auch als $x_1 \cdot x_1 + 1$ oder $x_1^2 + 1$ schreiben, wird in jedem Ring als Abbildung
+	\begin{align*}
+		\begin{cases}
+			R &\to R\\
+			x &\mapsto x_1^2+1
+		\end{cases}
+	\end{align*}
+	interpretiert.
+\end{example}
+\begin{definition}
+	Mal eine Reihe von Definitionen:
+	\begin{itemize}
+		\item \begriff{$\LL$-Formel} ist eine (nach den üblichen Regeln) wohlgeformte Zeichenkette über das Alphabet $\FF\cup \RR\cup \CC \cup \set{\forall, \exists, \wedge,\vee, \neg, =, ),(}$
+		\item \begriff{atomare Formel} ist von der Form $t_1 = t_2$ oder $R(t_1,\dots, t_{\arity(R)})$ mit $R\in \RR$ und Termen $t_1 \dots, t_{\arity(R)}$.
+		\item Formel $\phi$ ist \begriff{quantorenfrei}, wenn \ital{keine} $\forall, \exists$ in $\phi$.
+		\item Formel $\phi$ ist \begriff{essentiell}, wenn sie die Form $\exists x_1, \dots, \exists x_n \psi$, wobei $\psi$ \ital{quantorenfrei} ist
+		\item Variable $x$ ist \begriff{frei} in $\phi$, wenn $x$ nicht im Geltungsbereich eines Quantors liegt.
+		\item Eine Formel $\phi$ ist eine \begriff{Aussage}, wenn keine Variable in $\phi$ \ital{frei} vorkommt.
+		\item Interpretation einer $\LL$-Formel $\phi(x_1, \dots, x_n)$ in einer $\LL$-Struktur $M$ ist die entsprechende Relation $\phi^{\MM} \subseteq M^n$ bestehend aus $\ul{a} \in M^n$, auf die $\phi$ zutrifft (in Zeichen $\MM \satisfy \phi(\ul{a})$). Ist $n = 0$, so sagen wir $\phi$ gilt in $\MM$ (in Zeichen $\MM \satisfy \phi$) oder nicht.
+	\end{itemize}
+\end{definition}
+\begin{*remark}
+	\fehmnote{Wir schreiben $\phi(x_1, \dots, x_n)$ um anzuzeigen, dass $x_1, \dots, x_n$ in $\phi$ frei sind.}
+	\pascalnote{Die $x_i$, bzw $\ul{x}$ in $\phi(x_1, \dots, x_n) = \phi(\ul{x})$ ist nur Platzhalter!}
+\end{*remark}
+\begin{example}
+	Die $\LL_{\ring}$-Aussage $\forall x \forall y (xy=yx)$ gilt in einem Ring genau dann, wenn er kommutativ ist. Die Formel $\exists y (y^2 =x)$ trifft in einem Ring genau auf die Quadrate zu.
+\end{example}
+\begin{example}
+	Sei $\MM$ eine $\LL$-Struktur.
+	\begin{itemize}
+		\item \begriff{atomare Diagramme} $\Diag(\MM)$ sind die Menge der \ital{quantorfreien} $\LL(M)$-Aussagen, die in $\MM$ gelten.
+		\item \begriff{elementare Diagramme} $\Diag_{\el}(\MM)$
+	\end{itemize}
+\end{example}
+\begin{*remark}
+	\begin{itemize}
+		\item \marganote{In der Literatur steht \ital{atomares Diagramm} $\Diag(\MM)$ wäre die Menge der Negationen von atomaren Aussagen und Negationen von atomaren Aussagen, die in $\MM$ gelten.}
+		\item \fehmnote{Im Sinne von \propref{def_2_2_8} implizieren sich diese beiden Theorien gegenseitig (jede der beiden Theorien impliziert jede Aussage der anderen). Es macht praktisch keinen Unterschied, wie man es definiert.}
+	\end{itemize}
+\end{*remark}
+\begin{remark}
+	Wir benutzen die üblichen Abkürzungen, etwa $\phi \implies \psi$ für $\phi \vee \psi$ und $(\phi \to \psi) \wedge (\psi \to \phi)$.
+\end{remark}
+\begin{definition}
+	Und noch mehr Definitionen:
+	\begin{itemize}
+		\item \begriff{$\LL$-Theorie} ist eine Menge von $\LL$-Aussagen
+		\item Eine $\LL$-Struktur $\MM$ ist eine \begriff{Modell} der $\LL$-Theorie $T$ (in Zeichen $\MM \satisfy T$), wenn $\MM \satisfy \phi$ für alle $\phi \in T$. Die Theorie einer $\LL$-Struktur ist
+		\begin{align*}
+			\theory(\MM) &= \set{\phi \colon \MM \satisfy \phi}.
+			\intertext{Die Theorie einer Menge $\M$ von $\LL$-Strukturen ist}
+			\theory(\M) &= \bigcap_{\MM \in \M} \theory(\MM). 
+		\end{align*}
+		\item Zwei $\LL$-Strukturen $\MM,\NN$ heißen \begriff{elementar äquivalent}, in Zeichen $\MM = \NN$, wenn $\theory(\MM) = \theory(\NN)$.
+		\item $\LL$-Theorie $T$ heißt \begriff{konsistent} \marganote{(auch \ital{erfüllbar})}, wenn sie ein Modell hat.
+	\end{itemize}
+\end{definition}
+\begin{definition}\proplbl{def_2_2_8}
+	\begin{itemize}
+		\item $\LL$-Theorie $T$ \begriff{impliziert} eine Aussage $\phi$ (in Zeichen $T \satisfy \phi$), wenn $\MM \satisfy T \implies \MM \satisfy \phi$.
+		\item Theorie $T$ ist \begriff{vollständig}, wenn $T \satisfy \phi$ oder $T \satisfy \neg \phi$ für jede Aussage $\phi$.
+	\end{itemize}
+\end{definition}
+
 \subsection{Kompaktheitssatz}
 
 \subsection{Ultraprodukte}
