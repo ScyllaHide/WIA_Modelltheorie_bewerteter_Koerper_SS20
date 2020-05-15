@@ -173,7 +173,7 @@ So nun werden wir noch etwas höher bauen ...
 		\item Eine $\LL$-Struktur $\MM$ ist eine \begriff{Modell} der $\LL$-Theorie $T$ (in Zeichen $\MM \satisfy T$), wenn $\MM \satisfy \phi$ für alle $\phi \in T$. Die Theorie einer $\LL$-Struktur ist
 		\begin{align*}
 			\theory(\MM) &= \set{\phi \colon \MM \satisfy \phi}.
-			\intertext{Die Theorie einer Menge $\M$ von $\LL$-Strukturen ist}
+			\intertext{Die Theorie einer Klasse $\M$ von $\LL$-Strukturen ist}
 			\theory(\M) &= \bigcap_{\MM \in \M} \theory(\MM). 
 		\end{align*}
 		\item Zwei $\LL$-Strukturen $\MM,\NN$ heißen \begriff{elementar äquivalent}, in Zeichen $\MM = \NN$, wenn $\theory(\MM) = \theory(\NN)$.
@@ -186,7 +186,64 @@ So nun werden wir noch etwas höher bauen ...
 		\item Theorie $T$ ist \begriff{vollständig}, wenn $T \satisfy \phi$ oder $T \satisfy \neg \phi$ für jede Aussage $\phi$.
 	\end{itemize}
 \end{definition}
-
+\todo[inline]{Add literatur remark here! Marker theorem 1.1.10 and add reference 3.2 here!}
+\begin{remark}
+	Ist $\MM \cong \NN$, so ist $\MM \equiv \NN$ (Marker Theorem 1.1.10), und für endliche Strukturen (und nur für diese, siehe chap 3.2) gilt auch die Umkehrung. Eine Theorie ist genau dann vollständig, wenn
+	\begin{align*}
+		\MM, \NN \satisfy T \implies \MM = \NN
+	\end{align*}
+	gilt. \marganote{(für alle $\MM,\NN$)}
+\end{remark}
+\begin{remark}\proplbl{rem_2_2_10}
+	Seien $\MM \le \NN$ $\LL$-Strukturen. Ist $\phi$ eine \ital{quantorenfreie Aussage}, so gilt
+	\begin{align*}
+		\MM \satisfy \phi \iff \NN \satisfy \phi
+	\end{align*}
+	Ist allgemeiner $\phi$ eine \ital{quantorfreie Formel}, so gilt
+	\begin{align*}
+		\MM \satisfy \phi(\ul{a}) \iff \NN \satisfy \phi(\ul{a}) \quad \text{ für alle }\ul{a} \in M^n
+	\end{align*}
+	Ist $\phi$ eine \ital{existielle Formel}, so gilt immerhin noch
+	\begin{align*}
+		\MM \satisfy \phi(\ul{a}) \implies \NN \satisfy \phi(\ul{a}) \quad \text{ für alle }\ul{a} \in M^n
+	\end{align*}
+\end{remark}
+\todo[inline]{How to proof this? Or is it obvious?}
+\begin{proof}[\propref{rem_2_2_10}]
+	$\dots$
+\end{proof}
+\begin{definition}
+	\begin{itemize}
+		\item Erweiterung $\MM \le \NN$ ist \begriff{elementar} (in Zeichen $\MM \elem \NN$), wenn für \ital{jede} $\LL$-Formel $\phi(x)$ und jedes $\ul{a} \in M^n$ gilt:
+		\begin{align*}
+		\MM \satisfy \phi(\ul{a}) \iff \NN \satisfy \phi(\ul{a})
+		\end{align*}
+		\item Abbildung $\xi \colon \MM \to \NN$ ist \begriff{elementar}, wenn sie seine Einbettung ist und $\xi(\MM) \elem \NN$
+		\item Erweiterung $\MM \le \NN$ heißt \begriff{existentiell} (bzw. $\MM$ heißt \begriff{existentiell abgeschlossen} in $\NN$), in Zeichen $\MM \elem_{\exists} \NN$, wenn für jede \ital{existentielle} $\LL$-Formel $\phi(\ul{x})$ und jedes $\ul{a} \in M^n$ gilt:
+		\begin{align*}
+			\MM \satisfy \phi(\ul{a}) \iff \NN \satisfy \phi(\ul{a}).
+		\end{align*}
+	\end{itemize}
+\end{definition}
+\begin{remark}
+	\proplbl{rem_2_2_12}
+	Es gilt also $\MM\elem \NN \implies \MM \elem_{\exists} \NN \implies \MM \le \NN$ und $\MM \elem \NN \implies \MM \equiv \NN$.
+\end{remark}
+\todo[inline]{This also needs a small proof here, but for me its not clear!}
+\begin{proof}[\propref{rem_2_2_12}]
+	$\dots$
+\end{proof}
+\begin{remark}
+	\proplbl{rem_2_2_13}
+	\marganote{Sei $\NN$ eine $\LL$-Struktur und} sei $\MM$ eine $\LL(N)$-Struktur
+	\begin{enumerate}
+		\item Genau dann, wird durch $c \mapsto c^{\MM}$ eine $\LL$-Einbettung von $\NN$ nach $\MM$ gegeben, wenn $\MM \elem \Diag(\NN)$.
+		\item Genau dann, wird durch $c \mapsto c^{\MM}$ eine elementare Einbettung von $\NN$ nach $\MM$ gegeben, wenn $\MM \satisfy \Diag_{\el}(\NN)$.
+	\end{enumerate}
+\end{remark}
+\begin{proof}[\propref{rem_2_2_13}, Marker, Lemma 2.3.3]
+	$\dots$
+\end{proof}
 \subsection{Kompaktheitssatz}
 
 \subsection{Ultraprodukte}
