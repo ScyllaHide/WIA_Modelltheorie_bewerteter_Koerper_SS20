@@ -2,6 +2,7 @@
 \usepackage{mathoperators}
 
 \usepackage{xcolor}
+\usepackage{todonotes}						% put todonotes but with online, otherwise latex gets broken :/
 % % % local commands
 \DeclareMathOperator{\Ad}{Ad}				% Adjoint
 \DeclareMathOperator{\PSL}{PSL} 			% projective linear group 
@@ -32,10 +33,12 @@
 \newcommand{\satisfy}{\models}					% M \satisfy \phi(a)
 \newcommand{\lsatisfy}{\mathbin{\rotatebox[origin=c]{180}{$\models$}}}					% \phi(a) \satisfy M
 \DeclareMathOperator{\Diag}{Diag}				% atomic diagrams
+\newcommand{\elem}{\prec}						% expansion is elementary
 
 % % % % better \le and \ge
 \renewcommand{\ge}{\geqslant}
 \renewcommand{\le}{\leqslant}
+\renewcommand{\iff}{\Longleftrightarrow}
 
 \DeclareMathOperator{\group}{group}
 \DeclareMathOperator{\ring}{ring}
